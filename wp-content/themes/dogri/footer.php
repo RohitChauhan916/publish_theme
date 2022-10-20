@@ -50,7 +50,6 @@ if ( is_active_sidebar( 'first-footer-widget-area' ) || is_active_sidebar( 'seco
 
 </footer>
 <?php } ?>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <?php wp_footer(); ?>
 <script>    
     $(".dropdown-trigger").dropdown();

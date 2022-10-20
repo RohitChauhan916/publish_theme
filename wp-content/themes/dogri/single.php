@@ -20,7 +20,16 @@ while(have_posts())
                         <h1><?php the_title();?></h1>
                     </div>
                     <div class="post-content">
-                        <?php the_content();?>
+                        <?php the_content();
+                        wp_link_pages(
+                            array(
+                                'before'   => '<nav class="page-links" aria-label="' . esc_attr__( 'Page', 'dogri' ) . '">',
+                                'after'    => '</nav>',
+                                /* translators: %: Page number. */
+                                'pagelink' => esc_html__( 'Page %', 'dogri' ),
+                            )
+                        );
+                        ?>
                     </div>
                 </div>
             </div>

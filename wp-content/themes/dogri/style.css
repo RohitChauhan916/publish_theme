@@ -1,15 +1,62 @@
 /*
 Theme Name: Dogri
+Theme URI: 
 Author: Rohit Chauhan
-Description: .
+Author URI: https://wordpress.org/
+Description:  Dogri is a responsive blog theme made for personal bloggers and lifestyle bloggers. Its beautiful and minimalistic look gives this theme a perfectly stylized image whether you're a food-, fashion-, travel- or lifestyle blogger. Theme Everest is always invested in all forms of optimization and Dogri is no exception. In Dogri, you'll find a stylized and highly optimized theme with swift load times across the board without any loss of perfomance and responsiveness. All this is bundled with our built-in first-class SEO ( Search Engine Optimization ) which will help you get a head start on search engines like Google and Bing. Get ready to be noticed, with Dogri.
 Version: 1.0
 Requires at least: 5.3
 Tested up to: 6.0
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: custom-menu, custom-logo, featured-image-header, footer-widgets, featured-images, theme-options, threaded-comments, translation-ready, blog, entertainment, news
 Text Domain: dogri
 */
+
+/* Media captions */
+/* Accessibility */
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  clip-path: none;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  right: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+  outline: 0;
+}
 body{
     background-color: #f9f9f9;
   }
@@ -29,7 +76,7 @@ nav{
     color: #000000;
   }
   .carousel-slider{
-    height: 550px !important;
+    height: 550px;
   }
   .carousel .carousel-item > img {
     height: 550px;
@@ -152,17 +199,13 @@ nav{
     right: 0;
     box-shadow: 4px 4px 10px 1px #2a4bfe;
   }
-  .blog {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-  .blog h3{
+  .blogs h3{
     text-align: center;
     padding-bottom: 30px;
     position: relative !important;
     font-family: Teko, sans-serif;
   }
-  .blog h3:after{
+  .blogs h3:after{
     position: absolute !important;
     content: '' !important;
     width: 70px !important;
@@ -235,7 +278,22 @@ nav{
     margin: auto;
   }
   .blog_section_title .page-title{
-    color: #2a4bfe;
+    padding-bottom: 30px;
+    position: relative !important;
+    font-family: Teko, sans-serif;
+  }
+  .blog_section_title .page-title:after{
+    position: absolute !important;
+    content: '' !important;
+    width: 70px !important;
+    height: 3px !important;
+    background: linear-gradient(90deg,#24a3ff 0%,#2a4bfe 100%);
+    bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    box-shadow: 4px 4px 10px 1px #2a4bfe;
   }
   .blog_scection_content{
     background-color: #fff;
@@ -275,7 +333,22 @@ nav{
 }
 .post-title h1{
   text-align: center;
-  font-size: 45px;
+    padding-bottom: 30px;
+    position: relative !important;
+    font-family: Teko, sans-serif;
+}
+.post-title h1::after{
+  position: absolute !important;
+    content: '' !important;
+    width: 70px !important;
+    height: 3px !important;
+    background: linear-gradient(90deg,#24a3ff 0%,#2a4bfe 100%);
+    bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    box-shadow: 4px 4px 10px 1px #2a4bfe;
 }
 .comment-form textarea{
   background-color: transparent;
@@ -297,14 +370,105 @@ nav{
     transition: box-shadow .3s, border .3s;
     transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
 }
-  @media (max-width: 420px){
+.nav_archive{
+  text-align: center;
+}
+.nav_archive a{
+  color: #000;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+}
+.nav_archive .current{
+  background: #2a4bfe;
+  color: white;
+  padding: 2px 5px;
+  font-size: 20px;
+}
+.form-submit .submit{
+  background-color: transparent;
+    background-image: linear-gradient(90deg,#24a3ff 0%,#2a4bfe 100%);
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    -webkit-transition: .3s ease-out;
+    transition: .3s ease-out;
+    height: 54px;
+    line-height: 54px;
+    font-size: 18px;
+    padding: 0 28px;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    box-shadow: 0 8px 17px 2px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%);
+    border: none;
+}
+#wp-comment-cookies-consent{
+  margin: 4px 0px;
+  opacity: 1;
+}
+.comment-form-cookies-consent label{
+  margin: 0px 22px;
+  color: #000;
+  font-size: 14px;
+}
+.blogs{
+  padding-top: 80px;
+    padding-bottom: 80px;
+}
+.comment-form-comment label{
+  color: #000;
+  font-size: 14px;
+}
+.comment-form-author label{
+  color: #000;
+  font-size: 14px;
+}
+.comment-form-email label{
+  color: #000;
+  font-size: 14px;
+}
+.comment-form-url label{
+  color: #000;
+  font-size: 14px;
+}
+.not_found{
+  text-align: center;
+  width: 100%;
+}
+.post-contents{
+  background-color: #fff;
+}
+.dropdown-content li a{
+  font-family: Montserrat, sans-serif;
+    font-size: 16px !important;
+    color: #000;  
+}
+@media (max-width: 320px){
+  .carousel-slider {
+    height: 182px !important;
+  }
+   .carousel .carousel-item > img {
+    height: 182px !important;
+  }
+}
+  @media (max-width: 426px){
     .carousel-slider {
     height: 250px !important;
   }
    .carousel .carousel-item > img {
-    height: 250px;
-    object-fit: cover;
-     width: 100%;
+    height: 250px !important;
   }
   .service {
     padding-top: 50px;
@@ -318,10 +482,6 @@ nav{
     align-items: center;
     padding-bottom: 50px;
   }
-  .blog {
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
   .footer_pad {
     padding: 50px 0px;
   }
@@ -332,13 +492,63 @@ nav{
     height: auto;
   }
   }
+  @media (max-width: 482px) {
+  .bypostauthor {
+    display: block;
+  }
+  .aligncenter {
+    clear: both;
+    display: block;
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+}
+@media (max-width: 600px) {
+  .gallery-caption {
+    display: block;
+  }
+  figcaption,
+.wp-caption,
+.wp-caption-text,
+.wp-block-embed figcaption {
+	color: currentColor;
+	font-size: var(--global--font-size-xs);
+	line-height: var(--global--line-height-body);
+	margin-top: calc(0.5 * var(--global--spacing-unit));
+	margin-bottom: var(--global--spacing-unit);
+	text-align: center;
+}
+
+.alignleft figcaption,
+.alignright figcaption,
+.alignleft .wp-caption,
+.alignright .wp-caption,
+.alignleft .wp-caption-text,
+.alignright .wp-caption-text,
+.alignleft .wp-block-embed figcaption,
+.alignright .wp-block-embed figcaption {
+	margin-bottom: 0;
+}
+
+figure.wp-caption a:focus img {
+	outline-offset: 2px;
+}
+}
   @media (max-width: 768px){
     .carousel-slider {
-    height: 432px !important;
+    height: 432px;
   }
   .carousel .carousel-item > img {
     height: 432px;
     object-fit: cover;
      width: 100%;
   }
+  .about_para {
+    align-items: center;
+}
+.about_para h3:after {
+    right: 0;
+}
 }

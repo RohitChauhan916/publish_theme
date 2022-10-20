@@ -8,6 +8,11 @@ function dogri_files() {
     wp_enqueue_style('ayush_main_styles', get_stylesheet_uri());
     wp_enqueue_script( 'jquery-3', get_template_directory_uri() . '/js/jquery-3.2.1.min.js', array ( 'jquery' ), 1.0, true);
     wp_enqueue_script( 'masterialize_js', get_template_directory_uri() . '/js/materialize.min.js', array ( 'jquery' ), 1.0, true);
+
+    // Threaded comment reply styles.
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
 add_action('wp_enqueue_scripts', 'dogri_files');
 
@@ -16,8 +21,12 @@ function dogri_setup() {
     // Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
 
-    // Add <title> tag support
-    add_theme_support( 'title-tag' );  
+        /*
+		 * Let WordPress manage the document title.
+		 * This theme does not use a hard-coded <title> tag in the document head,
+		 * WordPress will provide it for us.
+		 */
+		add_theme_support( 'title-tag' );  
 
     /**
 		 * Add post-formats support.
@@ -39,7 +48,6 @@ function dogri_setup() {
 
     // Add custom-logo support
     add_theme_support( 'custom-logo' );
-    add_theme_support( 'title-tag' );
 
     register_nav_menu('primary', 'primary');
 
@@ -62,6 +70,20 @@ function dogri_setup() {
 
         // Add support for Block Styles.
 		add_theme_support( 'wp-block-styles' );
+
+        // Add support for full and wide align images.
+		add_theme_support( 'align-wide' );
+
+        // Custom background color.
+		add_theme_support(
+			'custom-background',
+			array(
+				'default-color' => '#fff',
+			)
+		);
+
+        // Add support for responsive embedded content.
+		add_theme_support( 'responsive-embeds' );
 }
 add_action( 'after_setup_theme', 'dogri_setup');
 
@@ -89,7 +111,7 @@ function create_bootstrap_menu( $theme_location ) {
                 }
                 if( $bool == true && count( $menu_array ) > 0 ) {
                      
-                    $menu_list .= '<li>';
+                    $menu_list .= '<li class="menu_li">';
                     $menu_list .= '<a class="dropdown-trigger" href="#" data-target="dropdown1"><span>'.$menu_item->title.'</span> <i class="material-icons right">arrow_drop_down</i></a>';
                      
                     $menu_list .= '<ul id="dropdown1" class="dropdown-content">' ."\n";
@@ -228,3 +250,21 @@ function dogri_widgets_init() {
  
 // Register sidebars by running tutsplus_widgets_init() on the widgets_init hook.
 add_action( 'widgets_init', 'dogri_widgets_init' );
+
+/**
+ * Fix skip link focus in IE11.
+ *
+ * This does not enqueue the script because it is tiny and because it is only for IE11,
+ * thus it does not warrant having an entire dedicated blocking script being loaded.
+ *
+ * @link https://git.io/vWdr2
+ */
+function dogri_skip_link_focus_fix() {
+	// The following is minified via `terser --compress --mangle -- js/skip-link-focus-fix.js`.
+	?>
+	<script>
+	/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
+	</script>
+	<?php
+}
+add_action( 'wp_print_footer_scripts', 'dogri_skip_link_focus_fix' );

@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo the_title()?></title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <?php wp_head(); ?>
 </head>
-<body <?php body_class( $class );?>>
+<body <?php body_class();?>>
 <?php 
 if ( function_exists( 'wp_body_open' ) ) {
 	wp_body_open();
@@ -15,6 +14,9 @@ if ( function_exists( 'wp_body_open' ) ) {
 	do_action( 'wp_body_open' );
 }
 ?>
+<div id="page" class="site">
+<a class="skip-link screen-reader-text" href="#content">
+<?php _e( 'Skip to content', 'dogri' ); ?></a>
 <header>
 <nav>
     <div class="nav-wrapper">

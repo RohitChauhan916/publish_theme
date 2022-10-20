@@ -120,7 +120,7 @@
 </section>
 <?php } ?>
 
-<section class="blog">
+<section class="blogs">
     <div class="container">
         <h3>Blog</h3>
         <div class="row">
@@ -146,7 +146,16 @@
                     <?php } ?>
                         <div class="card-content post_color bg_card">
                             <span class="card-title"><?php the_title();?></span>
-                            <p><?php echo wp_trim_words(get_the_content(), 10) ?></p>
+                            <p><?php echo wp_trim_words(get_the_content(), 10);
+                            wp_link_pages(
+                                array(
+                                    'before'   => '<nav class="page-links" aria-label="' . esc_attr__( 'Page', 'dogri' ) . '">',
+                                    'after'    => '</nav>',
+                                    /* translators: %: Page number. */
+                                    'pagelink' => esc_html__( 'Page %', 'dogri' ),
+                                )
+                            );
+                            ?></p>
                         </div>
                 </div></a>
             </div>
