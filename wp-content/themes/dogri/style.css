@@ -1,10 +1,10 @@
 /*
 Theme Name: Dogri
-Theme URI: 
+Theme URI: https://dogri-1.000webhostapp.com/themes/dogri-theme/
 Author: Rohit Chauhan
-Author URI: https://wordpress.org/
+Author URI: https://dogri-1.000webhostapp.com/
 Description:  Dogri is a responsive blog theme made for personal bloggers and lifestyle bloggers. Its beautiful and minimalistic look gives this theme a perfectly stylized image whether you're a food-, fashion-, travel- or lifestyle blogger. Theme Everest is always invested in all forms of optimization and Dogri is no exception. In Dogri, you'll find a stylized and highly optimized theme with swift load times across the board without any loss of perfomance and responsiveness. All this is bundled with our built-in first-class SEO ( Search Engine Optimization ) which will help you get a head start on search engines like Google and Bing. Get ready to be noticed, with Dogri.
-Version: 1.0
+Version: 1.5
 Requires at least: 5.3
 Tested up to: 6.0
 Requires PHP: 5.6
@@ -17,6 +17,123 @@ Text Domain: dogri
 /* Media captions */
 /* Accessibility */
 /* Text meant only for screen readers. */
+/* fallback */
+html {
+  scroll-behavior: smooth;
+}
+.entry-content a {
+  text-decoration: underline;
+  }
+.comment-body{
+  margin-bottom: 35px;
+}
+.comment-author{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.comment-author img{
+  border-radius: 50%;
+}
+.comment-author b{
+  margin-left: 20px
+}
+.comment-author b a{
+  color: #000000;
+  text-decoration: underline;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+}
+.says{
+  display: none;
+}
+.comment-metadata{
+  display: flex;
+  flex-direction: column;
+}
+.comment-metadata a{
+  color: #000000;
+  text-decoration: underline;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+
+}
+.comment-content p{
+  color: #000000;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+}
+.comment-reply-link{
+  color: #000000;
+  text-decoration: underline;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+}
+.banner{
+  position: relative;
+}
+.slider-menu{
+  position: absolute;
+    top: 40%;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.prev{
+  color: #2a4bfe;
+  background-color: white;
+  opacity: 0.7;
+}
+.next{
+  color: #2a4bfe;
+  background-color: white;
+  opacity: 0.7;
+}
+.card-action{
+  text-align: center;
+}
+.card-action a{
+  color: #2a4bfe !important;
+    font-weight: 500;
+    font-family: Montserrat, sans-serif;
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: sans-serif;
+  font-weight: 400;
+  src: url(./fonts/Montserrat/static/Montserrat-Regular.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: 'Teko';
+  font-style: sans-serif;
+  font-weight: 600;
+  src: url(./fonts/Teko/Teko-SemiBold.ttf) format('ttf');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
 .screen-reader-text {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);

@@ -34,17 +34,24 @@
                             <span class="card-title"><?php echo mb_strimwidth(get_the_title(), 0, 20, '...');?></span>
                             <p><?php echo get_the_date(); ?></p>
                         </div>
+                        <div class="card-action">
+                            <a href="<?php the_permalink();?>">Read More</a>
+                        </div>
                 </div>
             </a>
             </div>   
 
         <?php } ?>
         </div>
-        <div class="">
-            <ul class="pagination">
-                <?php echo the_posts_pagination(); ?>              
-            </ul>
-        </div>
+        <?php 
+        if(the_posts_pagination()){
+        ?>
+            <div class="">
+                <ul class="pagination">
+                    <?php echo the_posts_pagination(); ?>              
+                </ul>
+            </div>
+        <?php } ?>
         </div>
     </section>
 

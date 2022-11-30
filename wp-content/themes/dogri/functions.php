@@ -2,12 +2,16 @@
 
 
 function dogri_files() {
-    wp_enqueue_style( 'Montserrat', get_template_directory_uri() . '/font/Montserrat/static/Montserrat-Light.ttf', false);
-    wp_enqueue_style( 'Teko', get_template_directory_uri() . '/font/Teko/Teko-Medium.ttf', false);
-    wp_enqueue_style( 'masterialize_css', get_template_directory_uri() . '/css/materialize.min.css',false,'1.0','all');
+
+    $theme_version = wp_get_theme()->get( 'Version' );
+
+    wp_enqueue_style( 'Montserrat', get_template_directory_uri() . '/fonts/Montserrat/static/Montserrat-Light.ttf', false);
+    wp_enqueue_style( 'Teko', get_template_directory_uri() . '/fonts/Teko/Teko-Medium.ttf', false);
+    wp_enqueue_style( 'masterialize_css', get_template_directory_uri() . '/css/materialize.min.css',false,$theme_version,'all');
     wp_enqueue_style('ayush_main_styles', get_stylesheet_uri());
-    wp_enqueue_script( 'jquery-3', get_template_directory_uri() . '/js/jquery-3.2.1.min.js', array ( 'jquery' ), 1.0, true);
-    wp_enqueue_script( 'masterialize_js', get_template_directory_uri() . '/js/materialize.min.js', array ( 'jquery' ), 1.0, true);
+    wp_enqueue_script( 'jquery-3', get_template_directory_uri() . '/js/jquery-3.js', array ( 'jquery' ), $theme_version, true);
+    wp_enqueue_script( 'masterialize_js', get_template_directory_uri() . '/js/materialize.min.js', array ( 'jquery' ), $theme_version, true);
+    wp_enqueue_script( 'dogri-script', get_template_directory_uri() . '/js/index.js', array ( 'jquery' ), $theme_version, true);
 
     // Threaded comment reply styles.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -68,6 +72,14 @@ function dogri_setup() {
 			)
 		);
 
+        /*
+        * Make theme available for translation.
+        * Translations can be filed in the /languages/ directory.
+        * If you're building a theme based on dogri, use a find and replace
+        * to change 'twentytwenty' to the name of your theme in all the template files.
+        */
+	    load_theme_textdomain( 'dogri' );
+
         // Add support for Block Styles.
 		add_theme_support( 'wp-block-styles' );
 
@@ -84,6 +96,8 @@ function dogri_setup() {
 
         // Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
+
+        add_theme_support('custom-header');
 }
 add_action( 'after_setup_theme', 'dogri_setup');
 
@@ -207,7 +221,7 @@ function dogri_widgets_init() {
         'name' => __( 'First Footer Widget Area', 'dogri' ),
         'id' => 'first-footer-widget-area',
         'description' => __( 'The first footer widget area', 'dogri' ),
-        'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+        'before_widget' => '<div id="%1$s" class="widget-container entry-content %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="widget-title">',
         'after_title' => '</h3>',
@@ -218,7 +232,7 @@ function dogri_widgets_init() {
         'name' => __( 'Second Footer Widget Area', 'dogri' ),
         'id' => 'second-footer-widget-area',
         'description' => __( 'The second footer widget area', 'dogri' ),
-        'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+        'before_widget' => '<div id="%1$s" class="widget-container entry-content %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="widget-title">',
         'after_title' => '</h3>',
@@ -229,7 +243,7 @@ function dogri_widgets_init() {
         'name' => __( 'Third Footer Widget Area', 'dogri' ),
         'id' => 'third-footer-widget-area',
         'description' => __( 'The third footer widget area', 'dogri' ),
-        'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+        'before_widget' => '<div id="%1$s" class="widget-container entry-content %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="widget-title">',
         'after_title' => '</h3>',
@@ -240,7 +254,7 @@ function dogri_widgets_init() {
         'name' => __( 'Fourth Footer Widget Area', 'dogri' ),
         'id' => 'fourth-footer-widget-area',
         'description' => __( 'The fourth footer widget area', 'dogri' ),
-        'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+        'before_widget' => '<div id="%1$s" class="widget-container entry-content %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="widget-title">',
         'after_title' => '</h3>',

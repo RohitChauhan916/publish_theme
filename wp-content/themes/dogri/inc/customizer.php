@@ -330,7 +330,7 @@ function footer_copy_section($wp_customize){
     ));
 
     $wp_customize->add_setting('footer_copy', array(
-        'default'           => '© 2014 Copyright Text',
+        'default'           => '© 2014 Copyright Text <a href="#">Link</a>',
         'sanitize_callback' => 'wp_kses_post'
     ));
 

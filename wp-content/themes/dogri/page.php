@@ -19,7 +19,7 @@ while(have_posts())
                     <div class="post-title">
                         <h1><?php the_title();?></h1>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content entry-content">
                         <?php the_content();
                         wp_link_pages(
                             array(

@@ -1,6 +1,6 @@
 <?php get_header();?>
 <?php if(get_theme_mod('slider-display-setting') === 'Yes'){?>
-<section class="banner">
+<section class="banner" id="content">
     <div class="row">
             <div class="carousel carousel-slider">
                 <!-- Slider 1 -->
@@ -9,8 +9,8 @@
                 $slider_one_data = wp_get_attachment_url( $slider_one_id , 'full' );
                 if ($slider_one_data){
             ?>
-                <a class="carousel-item" href="<?php get_theme_mod('banner_url_one')?>">
-                    <img src="<?php echo $slider_one_data;?>">
+                <a class="carousel-item" href="<?php echo esc_html(get_theme_mod('banner_url_one'))?>">
+                    <img src="<?php echo esc_html($slider_one_data);?>">
                 </a>
             <?php } ?>
 
@@ -20,8 +20,8 @@
                 $slider_two_data = wp_get_attachment_url( $slider_two_id , 'full' );
                 if ($slider_two_data){
             ?>
-                <a class="carousel-item" href="<?php get_theme_mod('banner_url_two')?>">
-                    <img src="<?php echo $slider_two_data;?>">
+                <a class="carousel-item" href="<?php echo esc_html(get_theme_mod('banner_url_two'))?>">
+                    <img src="<?php echo esc_html($slider_two_data);?>">
                 </a>
             <?php } ?>
 
@@ -31,11 +31,15 @@
                 $slider_three_data = wp_get_attachment_url( $slider_three_id , 'full' );
                 if ($slider_three_data){
             ?>
-                <a class="carousel-item" href="<?php get_theme_mod('banner_url_three')?>">
-                    <img src="<?php echo $slider_three_data;?>">
+                <a class="carousel-item" href="<?php echo esc_html(get_theme_mod('banner_url_three'))?>">
+                    <img src="<?php echo esc_html($slider_three_data);?>">
                 </a>
             <?php } ?>
             </div>
+            <div class="slider-menu">
+            <a href="#" class="prev"><i class="medium material-icons">navigate_before</i></a>
+            <a href="#" class="next"><i class="medium material-icons">navigate_next </i></a>
+        </div>
     </div>
 </section>
 <?php } ?>
@@ -47,13 +51,13 @@
         <?php $servicehead = get_theme_mod('service_head');
         if($servicehead){
         ?>
-        <h3><?php echo $servicehead?></h3>
+        <h3><?php echo esc_html($servicehead)?></h3>
         <?php } ?>
         <div class="row">
             <div class="col s12 m6 l4">
                 <div class="card small bg_card">
                     <div class="card-image">
-                        <i class="large material-icons"><?php echo esc_html(get_theme_mod('icon1'));?></i>
+                        <a href="#"><i class="large material-icons"><?php echo esc_html(get_theme_mod('icon1'));?></i></a>
                     </div>
                     <div class="card-content">
                         <span class="card-title"><?php echo esc_html(get_theme_mod('icon_head1'));?></span>
@@ -64,7 +68,7 @@
             <div class="col s12 m6 l4">
                 <div class="card small bg_card">
                     <div class="card-image">
-                        <i class="large material-icons"><?php echo esc_html(get_theme_mod('icon2'));?></i>
+                    <a href="#"><i class="large material-icons"><?php echo esc_html(get_theme_mod('icon2'));?></i></a>
                     </div>
                     <div class="card-content">
                         <span class="card-title"><?php echo esc_html(get_theme_mod('icon_head2'));?></span>
@@ -75,7 +79,7 @@
             <div class="col s12 m6 l4">
                 <div class="card small bg_card">
                     <div class="card-image">
-                        <i class="large material-icons"><?php echo esc_html(get_theme_mod('icon3'));?></i>
+                    <a href="#"><i class="large material-icons"><?php echo esc_html(get_theme_mod('icon3'));?></i></a>
                     </div>
                     <div class="card-content">
                         <span class="card-title"><?php echo esc_html(get_theme_mod('icon_head2'));?></span>
@@ -98,7 +102,7 @@
                 <?php $about_head =  get_theme_mod('about_head');
                     if($about_head){
                 ?>
-                <h3><?php echo $about_head;?></h3>
+                <h3><?php echo esc_html($about_head);?></h3>
                 <?php } ?>
                 <p><?php echo esc_html(get_theme_mod('about_para'));?></p>
                 <a class="waves-effect waves-light btn-large btn_color z-depth-3" href="<?php echo esc_html(get_theme_mod('about_url'));?>">READ MORE</a>
@@ -111,7 +115,7 @@
                 $about_data = wp_get_attachment_url( $about_id , 'full' );
                 if ($about_data){
             ?>
-                <img class="responsive-img z-depth-1" src="<?php echo $about_data; ?>">
+                <img class="responsive-img z-depth-1" src="<?php echo esc_html($about_data); ?>">
                 <?php } ?>
             </div>
         </div>
@@ -144,7 +148,7 @@
                             <?php the_post_thumbnail() ?>
                         </div>
                     <?php } ?>
-                        <div class="card-content post_color bg_card">
+                        <div class="card-content post_color">
                             <span class="card-title"><?php the_title();?></span>
                             <p><?php echo wp_trim_words(get_the_content(), 10);
                             wp_link_pages(
@@ -156,6 +160,9 @@
                                 )
                             );
                             ?></p>
+                        </div>
+                        <div class="card-action">
+                            <a href="<?php the_permalink();?>">Read More</a>
                         </div>
                 </div></a>
             </div>

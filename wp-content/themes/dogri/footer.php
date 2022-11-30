@@ -51,23 +51,5 @@ if ( is_active_sidebar( 'first-footer-widget-area' ) || is_active_sidebar( 'seco
 </footer>
 <?php } ?>
 <?php wp_footer(); ?>
-<script>    
-    $(".dropdown-trigger").dropdown();
-    $(".dropdown-trigger1").dropdown();
-
-    $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
-
-  $('.carousel.carousel-slider').carousel({
-    fullWidth: true,
-    indicators: true
-  });
-  autoplay();
-function autoplay() {
-    $('.carousel.carousel-slider').carousel('next');
-    setTimeout(autoplay, 4500);
-}
-</script>
 </body>
 </html>

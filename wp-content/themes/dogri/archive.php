@@ -33,9 +33,13 @@
 
         <?php } ?>
         </div>
-        <div class="nav_archive">
-                <?php echo paginate_links(); ?>            
-        </div>
+        <?php 
+            if(paginate_links()){
+        ?>
+            <div class="nav_archive">
+                    <?php echo paginate_links(); ?>            
+            </div>
+        <?php } ?>
         </div>
     </section>
 
